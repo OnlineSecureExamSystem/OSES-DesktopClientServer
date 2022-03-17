@@ -1,1 +1,1 @@
-examClientMVVM
+Desktop client ASP.NET server
