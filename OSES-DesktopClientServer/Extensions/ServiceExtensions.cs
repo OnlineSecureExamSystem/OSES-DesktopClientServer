@@ -1,4 +1,5 @@
-﻿namespace OSES_DesktopClientServer.Extensions;
+﻿using System.Data;
+namespace OSES_DesktopClientServer.Extensions;
 
 public static class ServiceExtensions
 {
@@ -18,4 +19,7 @@ public static class ServiceExtensions
         {
             // default configuration for now
         });
+    
+    // Sql configuration
+        
 }
