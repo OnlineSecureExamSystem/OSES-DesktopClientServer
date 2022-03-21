@@ -1,6 +1,6 @@
 ﻿namespace OSES_DesktopClientServer.Models;
 
-public class TpTdTeacher
+public class TpTdTeacher : Teacher
 {
     
 }

@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using NLog;
 using OSES_DesktopClientServer.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
+builder.Services.ConfigureLoggerService();
+builder.Services.ConfigureDataAccess();
+builder.Services.ConfigureUserService();
+//builder.Services.ConfigureServiceManager();
 
 
 builder.Services.AddControllers();

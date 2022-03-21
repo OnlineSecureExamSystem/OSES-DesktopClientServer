@@ -1,6 +1,6 @@
 ﻿namespace OSES_DesktopClientServer.Models;
 
-public class Admin
+public class Admin : User
 {
     
 }

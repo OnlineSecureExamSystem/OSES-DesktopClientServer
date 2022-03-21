@@ -1,6 +1,6 @@
 ﻿namespace OSES_DesktopClientServer.Models;
 
-public class HeadTeacher
+public class HeadTeacher : Teacher
 {
     public Guid Id { get; set; }
     public string? FirstName { get; set; }
