@@ -17,7 +17,6 @@ public class UserController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        throw new UserNotFoundException(Guid.NewGuid());;   
         var users = _service.UserService.GetAllUsers();
         return Ok(users);
     }

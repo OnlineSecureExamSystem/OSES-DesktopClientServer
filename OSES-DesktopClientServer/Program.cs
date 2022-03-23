@@ -15,7 +15,10 @@ builder.Services.ConfigureServiceManager();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+}).AddXmlDataContractSerializerFormatters();
 
 var app = builder.Build();
 
