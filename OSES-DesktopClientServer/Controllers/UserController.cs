@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OSES_DesktopClientServer.Contracts;
 using OSES_DesktopClientServer.Models;
+using OSES_DesktopClientServer.Models.Exceptions;
 
 namespace OSES_DesktopClientServer.Controllers;
 
@@ -16,14 +17,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        try
-        {
-            var users = _service.UserService.GetAllUsers();
-            return Ok(users);
-        }
-        catch (Exception e)
-        {
-            return StatusCode(500, "Internal server error \n" + e);
-        }
+        var users = _service.UserService.GetAllUsers();
+        return Ok(users);
     }
 }

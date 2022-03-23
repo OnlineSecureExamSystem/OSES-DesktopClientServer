@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
+using OSES_DesktopClientServer.Contracts;
 using OSES_DesktopClientServer.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,15 +15,18 @@ builder.Services.ConfigureServiceManager();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+}).AddXmlDataContractSerializerFormatters();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-    // Exception Handling middleware
-    app.UseDeveloperExceptionPage();
-else
-    // forces https
+// global exceptions handling 
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
+
+if (app.Environment.IsProduction())
     app.UseHsts();
 
 // redirects http calls to https

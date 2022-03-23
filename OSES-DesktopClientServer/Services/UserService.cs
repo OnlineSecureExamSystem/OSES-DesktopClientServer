@@ -4,6 +4,7 @@ using OSES_DesktopClientServer.Contracts;
 using OSES_DesktopClientServer.Models;
 using Dapper;
 using OSES_DesktopClientServer.DataTransferObjects;
+using OSES_DesktopClientServer.Models.Exceptions;
 
 namespace OSES_DesktopClientServer.Services;
 
@@ -34,7 +35,7 @@ public class UserService : IUserService
         }
     }
 
-    public UserDto? GetUserById(int id)
+    public UserDto? GetUserById(string id)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -42,6 +43,8 @@ public class UserService : IUserService
                  new { Id = id },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
+            if (user is null)
+                throw new UserNotFoundException(new Guid(id));
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
         }

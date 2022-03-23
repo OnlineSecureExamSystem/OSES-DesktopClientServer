@@ -9,7 +9,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<User, UserDto>()
-            .ForCtorParam("FullName",
+            .ForMember(dest => dest.FullName,
                 src => src.MapFrom(x => x.FirstName + " " + x.LastName));
     }
 }
