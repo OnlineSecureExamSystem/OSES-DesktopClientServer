@@ -8,13 +8,12 @@ namespace OSES_DesktopClientServer.Controllers;
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-    
     private readonly IServiceManager _service;
 
     public UserController(IServiceManager service) => _service = service;
 
 
-    [HttpGet(Name = "GetUser")]
+    [HttpGet]
     public IActionResult Get()
     {
         try

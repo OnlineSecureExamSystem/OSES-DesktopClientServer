@@ -12,6 +12,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureDataAccess();
 builder.Services.ConfigureServiceManager();
 
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers();
 

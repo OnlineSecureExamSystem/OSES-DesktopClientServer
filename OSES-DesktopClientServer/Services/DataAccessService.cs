@@ -23,6 +23,7 @@ public class DataAccessService : IDataAccessService
         if (connection.State == ConnectionState.Closed)
         {
             connection.Open();
+            _logger.LogInfo("Database connection opened.");
         }
         return connection;
     }

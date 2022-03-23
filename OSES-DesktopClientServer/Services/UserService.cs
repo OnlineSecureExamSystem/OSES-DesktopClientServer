@@ -1,7 +1,9 @@
 using System.Data;
+using AutoMapper;
 using OSES_DesktopClientServer.Contracts;
 using OSES_DesktopClientServer.Models;
 using Dapper;
+using OSES_DesktopClientServer.DataTransferObjects;
 
 namespace OSES_DesktopClientServer.Services;
 
@@ -11,24 +13,28 @@ public class UserService : IUserService
     private readonly IDataAccessService _dataAccess;
     //private readonly IEncryptionService _encryptionService;
     private readonly ILoggerManager _logger;
+    private readonly IMapper _mapper;
     
-    public UserService(IDataAccessService dataAccess, ILoggerManager logger)
+    public UserService(IDataAccessService dataAccess, ILoggerManager logger, IMapper mapper)
     {
         _dataAccess = dataAccess;
         _logger = logger;
+        _mapper = mapper;
     }
+ 
     
      
-    public IEnumerable<User> GetAllUsers()
+    public IEnumerable<UserDto> GetAllUsers()
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
             var users = connection.Query<User>("GetAllUsers",CommandType.StoredProcedure);
-            return users;
+            var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
+            return usersDto;
         }
     }
 
-    public User? GetUserById(int id)
+    public UserDto? GetUserById(int id)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -36,11 +42,12 @@ public class UserService : IUserService
                  new { Id = id },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
-            return user;
+            var userDto = _mapper.Map<UserDto>(user);
+            return userDto;
         }
     }
 
-    public User? GetUserByEmailAndPassword(string username, string password)
+    public UserDto? GetUserByEmailAndPassword(string username, string password)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -48,11 +55,12 @@ public class UserService : IUserService
                 new { Email = username, Password = password },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
-            return user;
+            var userDto = _mapper.Map<UserDto>(user);
+            return userDto;
         }
     }
 
-    public User? AddUser(User user)
+    public UserDto? AddUser(User user)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -60,11 +68,12 @@ public class UserService : IUserService
                 new { user.Email, user.Password, user.FirstName, user.LastName, user.Role },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
-            return result;
+            var userDto = _mapper.Map<UserDto>(result);
+            return userDto;
         }
     }
 
-    public User? UpdateUser(User user)
+    public UserDto? UpdateUser(User user)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -72,11 +81,12 @@ public class UserService : IUserService
                 new { user.Id, user.Email, user.Password, user.FirstName, user.LastName, user.Role },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
-            return result;
+            var userDto = _mapper.Map<UserDto>(result);
+            return userDto;
         }
     }
 
-    public User? DeleteUser(int id)
+    public UserDto? DeleteUser(int id)
     {
         using (IDbConnection connection = _dataAccess.GetConnection())
         {
@@ -84,7 +94,8 @@ public class UserService : IUserService
                 new { Id = id },
                 commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
-            return result;
+            var userDto = _mapper.Map<UserDto>(result);
+            return userDto;
         }
     }
 }
