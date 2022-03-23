@@ -31,15 +31,12 @@ public static class ServiceExtensions
     public static void ConfigureDataAccess(this IServiceCollection services) =>
         services.AddScoped<IDataAccessService, DataAccessService>();
     
-    // UserService configuration
-    public static void ConfigureUserService(this IServiceCollection services) =>
-        services.AddScoped<IUserService, UserService>();
     
-    // service manager configuration
-    // public static void ConfigureServiceManager(this IServiceCollection services) =>
-    //     services.AddTransient<IServiceManager, ServiceManager>();
-    
-   
-    
-        
+    // services configuration
+    public static void ConfigureServiceManager(this IServiceCollection services) =>
+        services.AddTransient<IServiceManager, ServiceManager>();
+
+
+
+
 }

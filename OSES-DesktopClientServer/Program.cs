@@ -10,8 +10,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureDataAccess();
-builder.Services.ConfigureUserService();
-//builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureServiceManager();
 
 
 builder.Services.AddControllers();

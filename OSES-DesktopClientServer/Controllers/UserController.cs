@@ -9,16 +9,22 @@ namespace OSES_DesktopClientServer.Controllers;
 public class UserController : ControllerBase
 {
     
-    private readonly IUserService _userService;
+    private readonly IServiceManager _service;
 
-    public UserController(IUserService userService) => _userService = userService;
-   
+    public UserController(IServiceManager service) => _service = service;
+
 
     [HttpGet(Name = "GetUser")]
     public IActionResult Get()
     {
-        var users = _userService.GetAllUsers();
-        return  Ok(users);
+        try
+        {
+            var users = _service.UserService.GetAllUsers();
+            return Ok(users);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "Internal server error \n" + e);
+        }
     }
-
 }
