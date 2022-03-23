@@ -1,4 +1,7 @@
 ﻿using System.Data;
+using OSES_DesktopClientServer.Contracts;
+using OSES_DesktopClientServer.Services;
+
 namespace OSES_DesktopClientServer.Extensions;
 
 public static class ServiceExtensions
@@ -20,6 +23,20 @@ public static class ServiceExtensions
             // default configuration for now
         });
     
-    // Sql configuration
-        
+    // Logger configuration
+    public static void ConfigureLoggerService(this IServiceCollection services) =>
+        services.AddSingleton<ILoggerManager, LoggerManager>();
+    
+    // DataAccess  configuration
+    public static void ConfigureDataAccess(this IServiceCollection services) =>
+        services.AddScoped<IDataAccessService, DataAccessService>();
+    
+    
+    // services configuration
+    public static void ConfigureServiceManager(this IServiceCollection services) =>
+        services.AddTransient<IServiceManager, ServiceManager>();
+
+
+
+
 }
