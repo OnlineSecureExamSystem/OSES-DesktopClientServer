@@ -1,8 +1,9 @@
-﻿using DesktopClient.Models;
+using DesktopClient.Models;
+using OSES_DesktopClientServer.Models;
 
-namespace OSES_DesktopClientServer.Models;
+namespace OSES_DesktopClientServer.DataTransferObjects;
 
-public class Exam
+public record ExamDto
 {
     public string? Id { get; set; }
     public string? Name { get; set; }

@@ -1,0 +1,121 @@
+{
+  "Id" : "0",
+  "Name" : "Algorithmic Exam",
+  "ExamCode" : "AAAAAA",
+  "Duration" : "00:30:00",
+  "Description" : "description",
+  "Exercises" : [
+    {
+      "Title": "Exercise 1",
+      "Description" : "This is the first exercise",
+      "Questions": [
+        {
+          "Id" : "0",
+          "Description" : {
+            "Label": "First Question",
+            "Type" : "1",
+            "Content" : "What is the output of the following code?"
+          },
+          "Answer" : {
+            "Type" : "1",
+            "Content" : [
+              {"Id": "0", "Content": "1", "IsChecked": false},
+              {"Id": "1", "Content": "5", "IsChecked": false},
+              {"Id": "2", "Content": "10", "IsChecked": false},
+              {"Id": "3", "Content": "50", "IsChecked": false},
+              {"Id": "4", "Content": "84", "IsChecked": false},
+              {"Id": "5", "Content": "11", "IsChecked": false}
+            ]
+          }
+        },
+        {
+          "Id" : "1",
+          "Description" : {
+            "Label": "Second Question",
+            "Type" : "1",
+            "Content" : "What is the capital of France?"
+          },
+          "Answer" : {
+            "Type" : "2",
+            "Content" : [
+              {"Id": "0", "Content": "Paris", "IsChecked": false},
+              {"Id": "1", "Content": "Tokyo", "IsChecked": false},
+              {"Id": "2", "Content": "London", "IsChecked": false},
+              {"Id": "3", "Content": "New York", "IsChecked": false},
+              {"Id": "4", "Content": "Moscow", "IsChecked": false},
+              {"Id": "5", "Content": "Berlin", "IsChecked": false}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Title": "Exercise 2",
+      "Description" : "This is the second exercise",
+      "Questions": [
+        {
+          "Id" : "2",
+          "Description" : {
+            "Label": "Third Question",
+            "Type" : "1",
+            "Content" : "Choose True or False"
+          },
+          "Answer" : {
+            "Type" : "3",
+            "Content" : [
+              {"Id": "0", "Content": "Water is Solid", "IsChecked": null},
+              {"Id": "1", "Content": "Hitler is alive", "IsChecked": null},
+              {"Id": "2", "Content": "The sun is hot", "IsChecked": null}
+            ]
+          }
+        },
+        {
+          "Id" : "3",
+          "Description" : {
+            "Label": "Forth Question",
+            "Type" : "1",
+            "Content" : "Tell us about yourself in 20 letters"
+          },
+          "Answer" : {
+            "Type" : "4",
+            "Content" : ""
+          }
+        }
+      ]
+    },
+    {
+      "Title": "Exercise 3",
+      "Description" : "This is the third exercise",
+      "Questions": [
+        {
+          "Id" : "4",
+          "Description" : {
+            "Label": "Fifth Question",
+            "Type" : "1",
+            "Content" : "Tell us about yourself in 400 letters"
+          },
+          "Answer" : {
+            "Type" : "5",
+            "Content" : ""
+          }
+        },
+        {
+          "Id" : "5",
+          "Description" : {
+            "Label": "Sixth Question",
+            "Type" : "1",
+            "Content" : "Fill in the blanks: I have ..... Dad and ..... Mum , also i like ..... Movies."
+          },
+          "Answer" : {
+            "Type" : "6",
+            "Content" : [
+              {"Id": "0", "Content": ""},
+              {"Id": "1", "Content": ""},
+              {"Id": "2", "Content": ""}
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

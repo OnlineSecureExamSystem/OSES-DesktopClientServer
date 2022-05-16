@@ -37,6 +37,4 @@ public static class ServiceExtensions
         services.AddTransient<IServiceManager, ServiceManager>();
 
 
-
-
 }

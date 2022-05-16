@@ -1,3 +1,4 @@
+using System.Collections;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
 using OSES_DesktopClientServer.Contracts;
@@ -18,9 +19,11 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
 }).AddXmlDataContractSerializerFormatters();
 
 var app = builder.Build();
+
 
 // global exceptions handling 
 var logger = app.Services.GetRequiredService<ILoggerManager>();
